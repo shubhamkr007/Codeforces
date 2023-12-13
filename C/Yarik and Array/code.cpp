@@ -11,50 +11,35 @@
 using namespace std;
 
 
-ll maxSubArr(vector<ll>&arr, int left, int right) {
-    ll maxi = LLONG_MIN, max_ending=0;
-    for (int i=left; i<=right; i++) {
-        max_ending = max_ending + arr [i] ;
-        if (maxi < max_ending){
-            maxi=max_ending;
-        }
-        if(max_ending < 0){
-            max_ending=0;
-        }
-    }
-    return maxi;
-}
-
-
 
 int main()
 {
-
-    
-    int t;
+ll t;
     cin>>t;
-    while(t--){
-        int n;
+    while(t--) {
+        ll n,b,sum=0,maxi = INT_MIN,par=0;
         cin>>n;
-        vector<ll> v(n);
-        for(int i=0;i<n;i++){
-            cin>>v[i];
-        }
-        int prev=0;
-        ll ans=LLONG_MIN;
-
-        for(int i=0;i<n;i++){
-            if(abs(v[i]%2)==abs(v[i]%2)){
-                ans=max(ans,maxSubArr(v,prev,i-1));
-                prev=i;
+        cin>>b;
+        sum = b;
+        par = abs(b)%2;
+        maxi = sum;
+        for( ll i = 1 ; i < n ; i++) {
+            cin>>b;
+            if(abs(b)%2 != par) {
+                sum+=b;
             }
+            else {
+                sum = b;
+            }
+            if(b > sum) {
+                sum = b;
+            }
+            par = abs(b)%2;
+            maxi = max(sum,maxi);
         }
-
-        ans=max(ans,maxSubArr(v,prev, n-1));
-        cout<<"--"<<ans<<endl;
-
+        cout<<maxi<<endl;
     }
-
     return 0;
+    
 }
 
