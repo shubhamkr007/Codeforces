@@ -10,30 +10,6 @@
 #define sc second
 using namespace std;
 
-int solve(string s){
-    int count=0;
-    int i=0;
-    int j=0;
-
-    for(int i=0;i<s.length()-1;i++){
-
-        if(s.substr(i,2)=="AB"){
-            count++;
-            s[i]=='B';
-            s[i+1]='A';
-
-            for(int k=0;k<i-1;k+j){
-                if(s.substr(k,2)=="AB"){
-                    count++;
-                    s[k]='B';
-                    s[k+1]='A';
-                }
-            }
-            j=i+1;
-        }
-    }
-}
-
 int main()
 {
 
@@ -44,7 +20,7 @@ int main()
         cin>>n;
         string s;
         cin>>s;
-        // cout<<solve(s)<<endl;
+        
         int res=0;
         int count=0;
 
